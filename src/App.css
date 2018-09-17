@@ -79,7 +79,7 @@
 .section-title {
   /* border: 1px solid red; */
   display: flex;
-  min-height: 70px;
+  padding: 10px 0;
   /* padding: 20px 100px; */
   width: 100%;
   margin: 0 10px 60px;

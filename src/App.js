@@ -45,7 +45,7 @@ class App extends Component {
     super();
     this.state = {
       techComment: '',
-      showTechNotePopup: true,
+      showTechNotePopup: false,
       pageScrolling: ''
     }
   }
