@@ -1,0 +1,54 @@
+[
+  {
+    "title": "Finite.ly",
+    "technologies": [
+      "React",
+      "Redux",
+      "Socket.io",
+      "PostgresSQL",
+      "Node"
+    ],
+    "images": [
+      ""
+    ],
+    "description": "Finite.ly is a (count down) timer web application with an emphasis towards power users, with gamers being the most likely demographic. Its goal is to provide a comfortable, organized system where multiple timers can be run in tandem and have a variety of functionality attached to them. It aims to fulfill a role of providing support to more irregular, but still predicable, events or tasks that often take place in modern gaming. From the perspective of time-management mobile games this could be used to keep track of events like farming, where a player could have separate pre-defined timers for a variety of crops that require different times to grow such as a 'Strawberry' timer for 15:00 and a 'Cucumber' timer for 30:00 that they can start when crops are planted. MMO players might configure a timer to count down to the start of an event, at which point a notification is displayed and a second timer initializes to count down until the event is over before once more initializing the timer that counts down to the event's next occurance on a cycle. It is, however, in early development and many of these features are still being worked out and implemented. If you have thoughts or suggestions feel free to send them my way!",
+    "notes": "Finite.ly is a project I first had brief thoughts of years ago when looking for a program that could gracefully handle multiple timers at once."
+  },
+
+  {
+    "title": "",
+    "technologies": [
+      ""
+    ],
+    "images": [
+      ""
+    ],
+    "description": "",
+    "notes": ""
+  },
+
+  {
+    "title": "",
+    "technologies": [
+      ""
+    ],
+    "images": [
+      ""
+    ],
+    "description": "",
+    "notes": ""
+  },
+
+  {
+    "title": "",
+    "technologies": [
+      ""
+    ],
+    "images": [
+      ""
+    ],
+    "description": "",
+    "notes": ""
+  }
+]
+

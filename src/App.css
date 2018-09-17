@@ -9,20 +9,23 @@
   --landing-card: rgba(239, 132, 50, 0.8); 
   --landing-card-shadow: rgba(64, 40, 36, 0.8);
 
-  --about-text: rgb(4, 25, 15);
-  --about-card: rgba(120, 151, 171, 0.8); 
-  --about-card-shadow: rgba(4, 25, 15, 0.8);
+  --about-text: rgb(205, 223, 229);
+  --about-card: rgba(4, 25, 15, 0.8); 
+  --about-card-shadow: rgba(205, 223, 229, 0.8);
   
-  --technologies-text: rgb(64, 40, 36);
-  --technologies-card: rgba(239, 132, 50, 0.8); 
-  --technologies-card-shadow: rgba(64, 40, 36, 0.8);
+  --technologies-text: rgb(6, 79, 80);
+  --technologies-card: rgba(119, 163, 162, 0.8); 
+  --technologies-card-shadow: rgba(36, 80, 79, 0.8);
 
-  --projects-text: rgb(64, 40, 36);
-  --projects-card: rgba(239, 132, 50, 0.8); 
-  --projects-card-shadow: rgba(64, 40, 36, 0.8);
+  /* --projects-text: rgb(253, 163, 151); */
+  --projects-text: rgb(46, 30, 32);
+  /* --projects-text: rgb(94, 79, 77); */
+  /* --projects-text: rgb(206, 124, 106); */
+  --projects-card: rgba(228, 222, 218, 0.8); 
+  --projects-card-shadow: rgba(253, 163, 151, 0.8);
 
-  --contacts-text: rgb(64, 40, 36);
-  --contacts-card: rgba(239, 132, 50, 0.8); 
+  --contacts-text: rgb(57, 177, 243);
+  --contacts-card: rgba(2, 22, 81, 0.8); 
   --contacts-card-shadow: rgba(64, 40, 36, 0.8);
 
   --technologies-icon-size: 50px;
@@ -37,15 +40,28 @@
   display: flex;
   flex-direction: column;
   background-color: black;
+  /* align-items: center; */
+  /* width: 100%; */
 }
 
 .section {
   min-height: 100vh;
   display: flex;
   flex-flow: column;
-  align-items: center;
-  padding: 40px 10px;
+  padding: 80px 3%;
   justify-content: center;
+  align-items: center;
+  /* max-width: 600px; */
+}
+
+.section-content {
+  width: 85%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /* border: 1px solid greenyellow; */
 }
 
 .card {
@@ -57,16 +73,20 @@
 .blur-border {
   box-shadow: 0 0 45px 40px black;
   width: 100%;
-  z-index: 10;
+  z-index: 1;
 }
 
 .section-title {
+  /* border: 1px solid red; */
   display: flex;
-  align-items: center;
-  height: 70px;
-  padding: 20px 100px;
+  min-height: 70px;
+  /* padding: 20px 100px; */
+  width: 100%;
   margin: 0 10px 60px;
   background: var(--bgcolor);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 a {
@@ -82,6 +102,15 @@ a:focus {
   border: 1px solid red;
 }
 
+.disable-selection, .section-title {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 
 /******************************
 ****HEADERS********************
@@ -92,23 +121,23 @@ h1 {
 }
 
 h2 {
-    font-size: 40px;
+  font-size: 40px;
 }
 
 h3 {
-    font-size: 30px;
+  font-size: 30px;
 }
 
 h4 {
-    font-size: 25px;
+  font-size: 25px;
 }
 
 h5 {
-    font-size: 25px;
+  font-size: 25px;
 }
 
 h6 {
-    font-size: 23px;
+  font-size: 23px;
 }
 
 /******************************
@@ -128,9 +157,9 @@ h6 {
 
   /****ABOUT****/
 .about {
-  color: rgb(205, 223, 229);
-  --bgcolor: rgba(4, 25, 15, 0.8);
-  --shadow: rgba(205, 223, 229, 0.8);
+  color: var(--about-text);
+  --bgcolor: var(--about-card);
+  --shadow: var(--about-card-shadow);
 }
 
 .about-bg {
@@ -139,19 +168,23 @@ h6 {
 
   /****TECHNOLOGIES****/
 .technologies {
-  color: rgb(6, 79, 80);
-  fill: rgb(6, 79, 80);
-  --bgcolor: rgba(119, 163, 162, 0.8);
-  --shadow: rgba(36, 80, 79, 0.8);
+  color: var(--technologies-text);
+  fill: var(--technologies-text);
+  --bgcolor: var(--technologies-card);
+  --shadow: var(--technologies-card-shadow);
 }
 
 .technologies-bg {
   background: url('./assets/bgs/ocean-1845110_1920.jpg');
+  height: 120vh
 }
 
   /****PROJECTS****/
 .projects {
-
+  /* text-shadow: -1px 0 rgba(0, 0, 0, 0.6), 0 1px rgba(0, 0, 0, 0.6), 1px 0 rgba(0, 0, 0, 0.6), 0 -1px rgba(0, 0, 0, 0.6); */
+  color: var(--projects-text);
+  --bgcolor: var(--projects-card);
+  --shadow: var(--projects-card-shadow);
 }
 
 .projects-bg {
@@ -160,16 +193,14 @@ h6 {
 
   /****CONTACTS****/
 .contacts {
-  color: rgb(57, 177, 243);
-  --bgcolor: rgba(2, 22, 81, 0.8); 
-  --shadow: rgba(57, 177, 243, 0.8);
+  color: var(--contacts-text);
+  --bgcolor: var(--contacts-card); 
+  --shadow: var(--contacts-card-shadow);
 }
 
 .contacts-bg {
   background: url('./assets/bgs/aquatic-beautiful-biology-920157.jpg');
 }
-
-
 
 .section-bg {
   min-height: 100vh;
@@ -178,7 +209,6 @@ h6 {
   background-position: center;
   background-repeat: no-repeat;
 }
-
 
 .landing {
   display: flex;
@@ -207,12 +237,12 @@ h6 {
 }
 
 .about-contents {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
+  margin: 0 3vw;
+  padding: 10px;
   background: var(--bgcolor);
-  padding: 20px;
-  width: 60%;
+}
+
+.about-contents > h5 {
   text-align: center;
 }
 
@@ -220,10 +250,35 @@ h6 {
   margin-bottom: 15px;
 }
 
-.technologies-contents {
+
+  /****TECHNOLOGIES****/
+.technologies-note-popup {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
   display: flex;
-  /* justify-content: space-between; */
-  /* width: 70%; */
+  flex-flow: column;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 4;
+}
+
+.technologies-note-popup-card {
+  width: 95vw;
+  display: flex;
+  flex-flow: column;
+  padding: 20px;
+}
+
+.technologies-groups {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* justify-content: center; */
+  margin: -50px -200px 0;
+  /* border: 1px solid red; */
+  width: calc(100% + 60px);
 }
 
 .technologies-group {
@@ -231,8 +286,7 @@ h6 {
   padding: 20px;
   display: flex;
   flex-flow: column;
-  align-items: center;
-  margin: 0 30px;
+  margin: 50px 30px 0;
 }
 
 .technologies-row {
@@ -258,44 +312,34 @@ h6 {
   padding-top: 10px;
 }
 
+.technologies-comment {
+  margin-top: 60px;
+  padding: 20px 40px;
+  max-width: 100%;
+  transition: all 1s ease-in-out;
+  white-space: pre-line; /* I find the necessity of this line to be particularly stupid*/
+}
+
+  /****CONTACTS****/
 .contacts-contents {
-  max-width: 80%;
+  /* max-width: 90%; */
+}
+
+.contacts-main-card {
   display: flex;
+  flex-wrap: wrap;
   background: var(--bgcolor);
 }
 
 .contacts-column {
+  /* border: 1px solid red; */
   display: flex;
   flex-flow: column;
   align-items: center;
   padding: 20px;
+  flex-grow: 1;
 }
 
 .contacts-column h6 {
   padding-bottom: 8px;
 }
-
-/* .landing::before {
-  width: 100%;
-  height: 100%;
-  content: '55';
-  display: flex;
-  flex-grow: 1;
-  min-width: 10px;
-  background: blue;
-}
-
-.landing::after {
-  width: 100%;
-  height: 100%;
-  content: '55';
-  display: flex;
-  flex-grow: 10;
-  min-width: 30px;
-  background: blue;
-} */
-
-/* .svg-divider {
-  width: 100%;
-  height: 20px;
-} */
