@@ -152,7 +152,7 @@ class App extends Component {
             <div className='section-bg technologies-bg' />
           </Background> */}
 
-          <div className='section technologies disable-selection' onClick={e => this.selectTechnology(e, NOTES.DEFAULT)} >
+          <div className='section technologies disable-selection' >
             
             <div className='section-title card'>
               <h2>TECHNOLOGIES</h2>
