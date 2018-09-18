@@ -83,7 +83,6 @@ class App extends Component {
       return (
         <div className='technologies-note-popup technologies' onClick={() => this.closePopup()}>
           <div className='technologies-note-popup-card card'>
-            (Tap to close)
             {this.state.techComment}
           </div>
         </div>
@@ -157,7 +156,7 @@ class App extends Component {
             <div className='section-title card'>
               <h2>TECHNOLOGIES</h2>
             </div>
-            <div className='section-content'>
+            <div className='section-contents technologies-contents'>
               
               <div className={`technologies-groups`}>
             {/* FRONTEND TECHNOLOGIES CARD */}
@@ -253,7 +252,7 @@ class App extends Component {
             <div className='section-title card'>
               <h2>PROJECTS</h2>
             </div>
-            <div className='projects-content section-content card'>
+            <div className='projects-contents section-contents card'>
               <Project project={projects[0]} />
             </div>
           </div>

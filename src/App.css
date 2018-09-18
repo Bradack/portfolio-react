@@ -48,14 +48,15 @@
   min-height: 100vh;
   display: flex;
   flex-flow: column;
-  padding: 80px 3%;
+  padding: 80px 3vw;
   justify-content: center;
   align-items: center;
   /* max-width: 600px; */
 }
 
-.section-content {
-  width: 85%;
+.section-contents {
+  width: 94vw;
+  max-width: 600px;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -77,11 +78,10 @@
 }
 
 .section-title {
-  /* border: 1px solid red; */
   display: flex;
   padding: 10px 0;
-  /* padding: 20px 100px; */
   width: 100%;
+  max-width: 1000px;
   margin: 0 10px 60px;
   background: var(--bgcolor);
   align-items: center;
@@ -237,7 +237,7 @@ h6 {
 }
 
 .about-contents {
-  margin: 0 3vw;
+  /* max-width: 100%; */
   padding: 10px;
   background: var(--bgcolor);
 }
@@ -278,7 +278,8 @@ h6 {
   /* justify-content: center; */
   margin: -50px -200px 0;
   /* border: 1px solid red; */
-  width: calc(100% + 60px);
+  width: 840px;
+  max-width: 94vw;
 }
 
 .technologies-group {
@@ -320,6 +321,11 @@ h6 {
   white-space: pre-line; /* I find the necessity of this line to be particularly stupid*/
 }
 
+.projects-content {
+  max-width: 94vw;
+}
+
+
   /****CONTACTS****/
 .contacts-contents {
   /* max-width: 90%; */
@@ -329,6 +335,7 @@ h6 {
   display: flex;
   flex-wrap: wrap;
   background: var(--bgcolor);
+  /* max-width: 94; */
 }
 
 .contacts-column {
