@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import  { Parallax, Background } from 'react-parallax';
+import { Link, Events, scrollSpy } from 'react-scroll';
 
 import Project from './components/Project.js';
 
@@ -38,7 +39,7 @@ import bgProjects from './assets/bgs/aquarium-jellyfishes-underwater-20790.jpg';
 import bgContacts from './assets/bgs/aquatic-beautiful-biology-920157.jpg';
 
 const PARALLAX_STRENGTH = -200;
-
+const SCROLL_DURATION = 300;
 
 class App extends Component {
   constructor() {
@@ -46,8 +47,26 @@ class App extends Component {
     this.state = {
       techComment: '',
       showTechNotePopup: false,
-      pageScrolling: ''
+      pageScrolling: '',
+      navMenuDisplay: 'hidden',
     }
+  }
+
+  componentDidMount() {
+    Events.scrollEvent.register('begin', function(to, element) {
+      console.log("begin", arguments);
+    });
+ 
+    Events.scrollEvent.register('end', function(to, element) {
+      console.log("end", arguments);
+    });
+ 
+    scrollSpy.update();
+  }
+
+  componentWillUnmount() {
+    Events.scrollEvent.remove('begin');
+    Events.scrollEvent.remove('end');
   }
 
   renderDivider() {
@@ -90,6 +109,27 @@ class App extends Component {
     }
   }
 
+  toggleNavMenu() {
+    if(this.state.navMenuDisplay == 'hidden') {
+      this.setState({navMenuDisplay: 'visible'});
+    } else {
+      this.setState({navMenuDisplay: 'hidden'});
+    }
+  }
+
+  displayNavMenuItem(str) {
+    return (
+      <div style={{width: '100%'}}>
+        <div className='nav-menu-link-fade'>
+          <div/><div/><div/>
+        </div>
+        <div className='nav-menu-link-main'>
+          {str}
+        </div>
+      </div>
+    )
+  }
+
   render() {
     return (
       <div
@@ -100,6 +140,32 @@ class App extends Component {
 
         {this.showTechNotePopup()}
 
+        <div className='nav-menu-container'>
+          <div className='nav-menu-icon' onClick={() => this.toggleNavMenu()}>
+            &#9776;
+          </div>
+
+          <div className='nav-menu-links' style={{visibility: this.state.navMenuDisplay}}>
+
+            <Link className='nav-menu-link landing-theme' to='landing' spy={true} smooth={true} duration={SCROLL_DURATION}>
+              {this.displayNavMenuItem('Landing')}
+            </Link>
+
+            <Link className='nav-menu-link about-theme' to='about' spy={true} smooth={true} duration={SCROLL_DURATION}>
+              {this.displayNavMenuItem('About')}
+            </Link>
+            <Link className='nav-menu-link technologies-theme' to='technologies' spy={true} smooth={true} duration={SCROLL_DURATION}>
+              {this.displayNavMenuItem('Technologies')}
+            </Link>
+            <Link className='nav-menu-link projects-theme' to='projects' spy={true} smooth={true} duration={SCROLL_DURATION}>
+              {this.displayNavMenuItem('Projects')}
+            </Link>
+            <Link className='nav-menu-link contacts-theme' to='contacts' spy={true} smooth={true} duration={SCROLL_DURATION}>
+              {this.displayNavMenuItem('Contacts')}
+            </Link>
+          </div>
+        </div>
+
         <Parallax
           strength={PARALLAX_STRENGTH}
           bgImage={bgLanding}>
@@ -108,7 +174,7 @@ class App extends Component {
             <div className='section-bg landing-bg' />
           </Background> */}
 
-          <div className='section landing'>
+          <div className='section landing-theme' id='landing'>
             <div className='landing-title card'>
               <h1>Bradack Barnard</h1>
               <h4>Full-Stack Web Developer</h4>
@@ -116,8 +182,10 @@ class App extends Component {
           </div>
 
         </Parallax>
-
-        <div className='blur-border' />
+        
+        <div className='blur-border'>
+          <div />
+        </div>
         
         <Parallax
           strength={PARALLAX_STRENGTH}
@@ -127,7 +195,7 @@ class App extends Component {
             <div className='section-bg about-bg' />
           </Background> */}
 
-          <div className='section about'>
+          <div className='section about-theme' id='about'>
             <div className='section-title card'>
               <h2>ABOUT</h2>
             </div>
@@ -140,8 +208,10 @@ class App extends Component {
           </div>
 
         </Parallax>
-
-        <div className='blur-border' />
+        
+        <div className='blur-border'>
+          <div />
+        </div>
 
         <Parallax
           strength={PARALLAX_STRENGTH}
@@ -151,7 +221,7 @@ class App extends Component {
             <div className='section-bg technologies-bg' />
           </Background> */}
 
-          <div className='section technologies disable-selection' >
+          <div className='section technologies-theme disable-selection' id='technologies'>
             
             <div className='section-title card'>
               <h2>TECHNOLOGIES</h2>
@@ -237,8 +307,10 @@ class App extends Component {
             </div>
           </div>
         </Parallax>
-
-        <div className='blur-border' />
+        
+        <div className='blur-border'>
+          <div />
+        </div>
 
         <Parallax
           strength={PARALLAX_STRENGTH}
@@ -248,7 +320,7 @@ class App extends Component {
             <div className='section-bg projects-bg' />
           </Background> */}
 
-          <div className='section projects'>
+          <div className='section projects-theme' id='projects'>
             <div className='section-title card'>
               <h2>PROJECTS</h2>
             </div>
@@ -258,8 +330,10 @@ class App extends Component {
           </div>
 
         </Parallax>
-
-        <div className='blur-border' />
+        
+        <div className='blur-border'>
+          <div />
+        </div>
 
         <Parallax
           strength={PARALLAX_STRENGTH}
@@ -269,7 +343,7 @@ class App extends Component {
             <div className='section-bg contacts-bg' />
           </Background> */}
 
-          <div className='section contacts'>
+          <div className='section contacts-theme' id='contacts'>
             <div className='section-title card'>
               <h2>CONTACTS & LINKS</h2>
             </div>
@@ -292,7 +366,7 @@ class App extends Component {
               </div>
             </div>
           </div>
-
+          
         </Parallax>
 
       </div>

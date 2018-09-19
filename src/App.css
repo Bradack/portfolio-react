@@ -2,31 +2,38 @@
 
   --tech-icon-size: 60px;
   --nav-link-spacing: 31px;
-  --nav-bubble-size: 30;
   --border-shadow-height: 40px;
+
+  --general-opacity: 0.8;
 
   --landing-text: rgb(64, 40, 36);
   --landing-card: rgba(239, 132, 50, 0.8); 
-  --landing-card-shadow: rgba(64, 40, 36, 0.8);
+  --landing-card-solid: rgba(239, 132, 50); 
+  --landing-card-shadow: rgba(64, 40, 36);
+ 
 
   --about-text: rgb(205, 223, 229);
   --about-card: rgba(4, 25, 15, 0.8); 
-  --about-card-shadow: rgba(205, 223, 229, 0.8);
+  --about-card-solid: rgba(4, 25, 15); 
+  --about-card-shadow: rgba(205, 223, 229);
   
   --technologies-text: rgb(6, 79, 80);
   --technologies-card: rgba(119, 163, 162, 0.8); 
-  --technologies-card-shadow: rgba(36, 80, 79, 0.8);
+  --technologies-card-solid: rgba(119, 163, 162); 
+  --technologies-card-shadow: rgba(36, 80, 79);
 
   /* --projects-text: rgb(253, 163, 151); */
   --projects-text: rgb(46, 30, 32);
   /* --projects-text: rgb(94, 79, 77); */
   /* --projects-text: rgb(206, 124, 106); */
   --projects-card: rgba(228, 222, 218, 0.8); 
-  --projects-card-shadow: rgba(253, 163, 151, 0.8);
+  --projects-card-solid: rgba(228, 222, 218); 
+  --projects-card-shadow: rgba(253, 163, 151);
 
   --contacts-text: rgb(57, 177, 243);
   --contacts-card: rgba(2, 22, 81, 0.8); 
-  --contacts-card-shadow: rgba(64, 40, 36, 0.8);
+  --contacts-card-solid: rgba(2, 22, 81); 
+  --contacts-card-shadow: rgb(76, 60, 193);
 
   --technologies-icon-size: 50px;
 }
@@ -69,12 +76,26 @@
   border-radius: 5px;
   background: var(--bgcolor);
   box-shadow: 3px 5px 10px 2px var(--shadow);
+  /* opacity: var(--general-opacity); */
 }
 
 .blur-border {
-  box-shadow: 0 0 45px 40px black;
+  height: 0;
+  overflow: visible;
+}
+
+.blur-border > * {
+  background: purple;
+  position: relative;
+  height: 80px;
+  top: -40px;
   width: 100%;
-  z-index: 1;
+  z-index: 4;
+  /*** Thanks for the gradients go to colorzilla.com ***/
+  background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 24%, rgba(0,0,0,0.9) 34%, rgba(0,0,0,1) 45%, rgba(0,0,0,1) 55%, rgba(0,0,0,0.9) 66%, rgba(0,0,0,0.6) 76%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.6) 24%,rgba(0,0,0,0.9) 34%,rgba(0,0,0,1) 45%,rgba(0,0,0,1) 55%,rgba(0,0,0,0.9) 66%,rgba(0,0,0,0.6) 76%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.6) 24%,rgba(0,0,0,0.9) 34%,rgba(0,0,0,1) 45%,rgba(0,0,0,1) 55%,rgba(0,0,0,0.9) 66%,rgba(0,0,0,0.6) 76%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
 }
 
 .section-title {
@@ -145,71 +166,132 @@ h6 {
 ******************************/
 
   /****LANDING****/
-.landing {
-  color: rgb(64, 40, 36);
-  --bgcolor: rgba(239, 132, 50, 0.8);
-  --shadow: rgba(64, 40, 36, 0.8);
-}
-
-.landing-bg {
-  background: url('./assets/bgs/beach-clouds-dawn-754122.jpg');
+.landing-theme {
+  color: var(--landing-text);
+  --bgcolor: var(--landing-card);
+  --bgcolor-solid: var(--landing-card-solid);
+  --shadow: var(--landing-card-shadow);
 }
 
   /****ABOUT****/
-.about {
+.about-theme {
   color: var(--about-text);
   --bgcolor: var(--about-card);
+  --bgcolor-solid: var(--about-card-solid);
   --shadow: var(--about-card-shadow);
 }
 
-.about-bg {
-  background: url('./assets/bgs/ocean_bg2.jpg');
-}
-
   /****TECHNOLOGIES****/
-.technologies {
+.technologies-theme {
   color: var(--technologies-text);
   fill: var(--technologies-text);
   --bgcolor: var(--technologies-card);
+  --bgcolor-solid: var(--technologies-card-solid);
   --shadow: var(--technologies-card-shadow);
 }
 
-.technologies-bg {
-  background: url('./assets/bgs/ocean-1845110_1920.jpg');
-  height: 120vh
-}
-
   /****PROJECTS****/
-.projects {
-  /* text-shadow: -1px 0 rgba(0, 0, 0, 0.6), 0 1px rgba(0, 0, 0, 0.6), 1px 0 rgba(0, 0, 0, 0.6), 0 -1px rgba(0, 0, 0, 0.6); */
+.projects-theme {
   color: var(--projects-text);
   --bgcolor: var(--projects-card);
+  --bgcolor-solid: var(--projects-card-solid);
   --shadow: var(--projects-card-shadow);
 }
 
-.projects-bg {
-  background: url('./assets/bgs/aquarium-jellyfishes-underwater-20790.jpg');
-}
-
   /****CONTACTS****/
-.contacts {
+.contacts-theme {
   color: var(--contacts-text);
   --bgcolor: var(--contacts-card); 
+  --bgcolor-solid: var(--contacts-card-solid); 
   --shadow: var(--contacts-card-shadow);
 }
 
-.contacts-bg {
-  background: url('./assets/bgs/aquatic-beautiful-biology-920157.jpg');
+/******************************
+****NAV MENU*******************
+******************************/
+:root {
+  --hamburger-size: 50px;
+  --nav-link-border-size: 5px;
 }
 
-.section-bg {
-  min-height: 100vh;
-  width: 100vw;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+.nav-menu-container {
+  z-index: 11;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  height: var(--hamburger-size);
+  width: var(--hamburger-size);
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.nav-menu-icon {
+  font-size: var(--hamburger-size);
+  color: white;
+  padding: 3px;
+
+  /* font-style: bold; */
+  background: rgba(0,0,0,0.6);
+  box-shadow: 0 0 5px rgba(0,0,0,0.6);
+  border-radius: 5px;
+  /* mix-blend-mode: difference; */
+}
+
+.nav-menu-links {
+  position: absolute;
+  right: 0;
+  bottom: calc(var(--hamburger-size) + 10px);
+}
+
+.nav-menu-link {
+  display: flex;
+  position: relative;
+  margin-bottom: 4px;
+}
+
+.nav-menu-link-main {
+  border-top: var(--nav-link-border-size) solid var(--shadow);
+  border-bottom: var(--nav-link-border-size) solid var(--shadow);
+  background-color: var(--bgcolor-solid);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 8px;
+  padding-right: 13px;
+  padding-left: 10px;
+  font-size: 1.5em;
+}
+
+.nav-menu-link-fade {
+  display: flex;
+  position: absolute;
+  width: 30px;
+  left: -30px;
+  height: 100%;
+  opacity: 1;
+  flex-flow: column;
+}
+
+.nav-menu-link-fade div:nth-child(odd) {
+  height: var(--nav-link-border-size);
+  width: 100%;
+  background-image : linear-gradient(to right, 
+                    rgba(255,255,255, 0), 
+                    var(--shadow) 90%);
+}
+
+.nav-menu-link-fade div:nth-child(even) {
+  flex: 1;
+  width: 100%;
+  background-image : linear-gradient(to right, 
+                    rgba(255,255,255, 0), 
+                    var(--bgcolor-solid) 90%);
+}
+
+
+  /****LANDING****/
 .landing {
   display: flex;
   align-items: center;
@@ -218,11 +300,7 @@ h6 {
 }
 
 .landing-title {
-  /* margin-top: auto;
-  margin-bottom: auto; */
-  /* margin-right: 55%; */
   background: var(--bgcolor);
-  /* color: var(--landing-text); */
   box-shadow: 3px 5px 10px 2px var(--shadow);
   display: flex;
   flex-flow: column;
@@ -236,10 +314,9 @@ h6 {
   min-width: 20px;
 }
 
+  /****ABOUT****/
 .about-contents {
-  /* max-width: 100%; */
   padding: 10px;
-  background: var(--bgcolor);
 }
 
 .about-contents > h5 {
@@ -275,9 +352,7 @@ h6 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* justify-content: center; */
   margin: -50px -200px 0;
-  /* border: 1px solid red; */
   width: 840px;
   max-width: 94vw;
 }
@@ -321,15 +396,8 @@ h6 {
   white-space: pre-line; /* I find the necessity of this line to be particularly stupid*/
 }
 
-.projects-content {
-  max-width: 94vw;
-}
-
 
   /****CONTACTS****/
-.contacts-contents {
-  /* max-width: 90%; */
-}
 
 .contacts-main-card {
   display: flex;
@@ -350,3 +418,4 @@ h6 {
 .contacts-column h6 {
   padding-bottom: 8px;
 }
+
