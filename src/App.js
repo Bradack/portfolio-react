@@ -48,7 +48,7 @@ class App extends Component {
       techComment: '',
       showTechNotePopup: false,
       pageScrolling: '',
-      navMenuDisplay: 'hidden',
+      navMenuDisplay: '',
     }
   }
 
@@ -110,10 +110,11 @@ class App extends Component {
   }
 
   toggleNavMenu() {
-    if(this.state.navMenuDisplay == 'hidden') {
-      this.setState({navMenuDisplay: 'visible'});
+    console.log('toggling nav maneu. Value: ', this.state.navMenuDisplay)
+    if(this.state.navMenuDisplay !== 'nav-slide-in') {
+      this.setState({navMenuDisplay: 'nav-slide-in'});
     } else {
-      this.setState({navMenuDisplay: 'hidden'});
+      this.setState({navMenuDisplay: 'nav-slide-out'});
     }
   }
 
@@ -145,22 +146,22 @@ class App extends Component {
             &#9776;
           </div>
 
-          <div className='nav-menu-links' style={{visibility: this.state.navMenuDisplay}}>
+          <div className='nav-menu-links'>
 
-            <Link className='nav-menu-link landing-theme' to='landing' spy={true} smooth={true} duration={SCROLL_DURATION}>
+            <Link className={`nav-menu-link landing-theme ${this.state.navMenuDisplay}`} to='landing' spy={true} smooth={true} duration={SCROLL_DURATION}>
               {this.displayNavMenuItem('Landing')}
             </Link>
 
-            <Link className='nav-menu-link about-theme' to='about' spy={true} smooth={true} duration={SCROLL_DURATION}>
+            <Link className={`nav-menu-link about-theme ${this.state.navMenuDisplay}`} to='about' spy={true} smooth={true} duration={SCROLL_DURATION}>
               {this.displayNavMenuItem('About')}
             </Link>
-            <Link className='nav-menu-link technologies-theme' to='technologies' spy={true} smooth={true} duration={SCROLL_DURATION}>
+            <Link className={`nav-menu-link technologies-theme ${this.state.navMenuDisplay}`} to='technologies' spy={true} smooth={true} duration={SCROLL_DURATION}>
               {this.displayNavMenuItem('Technologies')}
             </Link>
-            <Link className='nav-menu-link projects-theme' to='projects' spy={true} smooth={true} duration={SCROLL_DURATION}>
+            <Link className={`nav-menu-link projects-theme ${this.state.navMenuDisplay}`} to='projects' spy={true} smooth={true} duration={SCROLL_DURATION}>
               {this.displayNavMenuItem('Projects')}
             </Link>
-            <Link className='nav-menu-link contacts-theme' to='contacts' spy={true} smooth={true} duration={SCROLL_DURATION}>
+            <Link className={`nav-menu-link contacts-theme ${this.state.navMenuDisplay}`} to='contacts' spy={true} smooth={true} duration={SCROLL_DURATION}>
               {this.displayNavMenuItem('Contacts')}
             </Link>
           </div>
