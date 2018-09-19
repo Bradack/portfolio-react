@@ -254,7 +254,7 @@ h6 {
   position: relative;
   margin-bottom: 4px;
   left: 200px;
-  opacity: 0;
+  opacity: 1;
 }
 
 .nav-menu-link-main {
@@ -279,6 +279,7 @@ h6 {
 }
 
 .nav-slide-out {
+  left: 0;
   animation-duration: 1s;
   animation-name: navslideout;
   animation-fill-mode: forwards;
