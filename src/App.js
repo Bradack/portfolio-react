@@ -49,6 +49,7 @@ class App extends Component {
       showTechNotePopup: false,
       pageScrolling: '',
       navMenuDisplay: '',
+      scrollLock: 'false',
     }
   }
 
@@ -85,15 +86,9 @@ class App extends Component {
     this.setState({
       techComment: note,
       showTechNotePopup: true,
+      scrollLock: true,
     })
     
-  }
-
-  closePopup() {
-    this.setState({
-      techComment: '',
-      showTechNotePopup: false
-    })
   }
 
   showTechNotePopup() {
@@ -109,6 +104,14 @@ class App extends Component {
     }
   }
 
+  closePopup() {
+    this.setState({
+      techComment: '',
+      showTechNotePopup: false
+    })
+  }
+
+    // Logic to open and close the mobine navigation menu
   toggleNavMenu() {
     console.log('toggling nav maneu. Value: ', this.state.navMenuDisplay)
     if(this.state.navMenuDisplay !== 'nav-slide-in') {
@@ -136,7 +139,7 @@ class App extends Component {
       <div
         className='main'
         style={{
-          
+          overflow: this.state.scrollLock ? 'hidden' : 'scroll'
         }}>
 
         {this.showTechNotePopup()}
@@ -234,17 +237,12 @@ class App extends Component {
                   <div className='technologies-row'>
                     <img src={htmlLogo} alt='HTML5' onClick={e => this.selectTechnology(e, NOTES.HTML)} />
                     <img src={cssLogo} alt='CSS3' onClick={e => this.selectTechnology(e, NOTES.CSS)} />
-                  </div>
-
-                  <div className='technologies-row'>
                     <img src={jsLogo} alt='Javascript' onClick={e => this.selectTechnology(e, NOTES.JS)} />
-                    <div>
-                    <img src={reactLogo} alt='React' onClick={e => this.selectTechnology(e, NOTES.REACT)} />
-                    </div>
-                    <img src={reduxLogo} alt='Redux' onClick={e => this.selectTechnology(e, NOTES.REDUX)} />
                   </div>
 
                   <div className='technologies-row'>
+                    <img src={reactLogo} alt='React' onClick={e => this.selectTechnology(e, NOTES.REACT)} />
+                    <img src={reduxLogo} alt='Redux' onClick={e => this.selectTechnology(e, NOTES.REDUX)} />
                     <img src={androidLogo} alt='React Native' onClick={e => this.selectTechnology(e, NOTES.RN)} />
                   </div>
 
@@ -258,16 +256,13 @@ class App extends Component {
                   <div className='technologies-row'>
                     <img src={postgresqlLogo} alt='PostgreSQL' onClick={e => this.selectTechnology(e, NOTES.SQL)} />
                     <img src={awsLogo} atl='Amazon Web Services' onClick={e => this.selectTechnology(e, NOTES.AWS)} />
+                    <img src={authLogo} alt='Auth 0' onClick={e => this.selectTechnology(e, NOTES.AUTH0)} />
                   </div>
 
                   <div className='technologies-row'>
                     <div style={{background: '#202020', borderRadius:'5px', width: '100%', height: '100%'}} onClick={e => this.selectTechnology(e, NOTES.NODE)} >
                       <img src={nodejsLogo} alt='Node J S' style={{padding: '2px'}}/>
                     </div>
-                  </div>
-
-                  <div className='technologies-row'>
-                    <img src={authLogo} alt='Auth 0' onClick={e => this.selectTechnology(e, NOTES.AUTH0)} />
                     <div style={{
                         borderRadius: '100px',
                         overflow: 'hidden'}}
@@ -284,10 +279,6 @@ class App extends Component {
             {/* TOOLS TECHNOLOGIES CARD */}
                 <div className='technologies-group card'>
                   <div className='technologies-row'>
-                    <img src={windowsLogo} alt='Windows' onClick={e => this.selectTechnology(e, NOTES.WIN)} />
-                    <img src={ubuntuLogo} alt='Ubuntu' onClick={e => this.selectTechnology(e, NOTES.UBUNTU)} />
-                  </div>
-                  <div className='technologies-row'>
                     <img src={vscodeLogo} alt='V S Code' onClick={e => this.selectTechnology(e, NOTES.VSC)} />
                     <img src={postmanLogo} alt='Postman' onClick={e => this.selectTechnology(e, NOTES.POSTMAN)} />
                   </div>
@@ -295,6 +286,10 @@ class App extends Component {
                     <img src={githubLogo} alt='GitHub' onClick={e => this.selectTechnology(e, NOTES.GITHUB)} />
                     <img src={gitLogo} alt='Git' onClick={e => this.selectTechnology(e, NOTES.GIT)} />
                     <img src={gitlabLogo} alt='GitLab' onClick={e => this.selectTechnology(e, NOTES.GITLAB)} />
+                  </div>
+                  <div className='technologies-row'>
+                    <img src={windowsLogo} alt='Windows' onClick={e => this.selectTechnology(e, NOTES.WIN)} />
+                    <img src={ubuntuLogo} alt='Ubuntu' onClick={e => this.selectTechnology(e, NOTES.UBUNTU)} />
                   </div>
                   {this.renderDivider()}
                   <h5>Tools</h5>

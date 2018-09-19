@@ -5,17 +5,33 @@ import './Project.css';
 
 class Project extends React.Component {
   
-  generateTechList() {
-    let techList = [];
+  generateTechList(columns) {
+    let techColumns = Array(columns).fill([])
+    // techColumns.fill(3, 0, columns)
     this.props.project.technologies.forEach( (tech, index) => {
-      techList.push(
+      let column = index % columns
+      console.log('tech', tech);
+      console.log('column:', column);
+      techColumns[column].push(
         <ul className='project-text-list-item' key={index}>
           {tech}
         </ul>
       )
+      console.log('techColumns:', techColumns[0]);
+    })
+    
+    console.log('techColumns:', techColumns[0]);
+    let formatted = [];
+
+    techColumns.forEach((techList, index) => {
+      formatted[index] = (
+        <div key={index}>
+          {techList}
+        </div>
+      )
     })
 
-    return techList;
+    return formatted;
   }
 
   render() {
@@ -30,7 +46,7 @@ class Project extends React.Component {
         <div className='project-text-techlist'>
           <h7>Notable Technologies</h7>
           <div className='project-text-techlist-list'>
-            {this.generateTechList()}
+            {this.generateTechList(2)}
           </div>
         </div>
         <div className='project-text-description'>

@@ -85,12 +85,12 @@
 }
 
 .blur-border > * {
-  background: purple;
+  /* background: purple; */
   position: relative;
   height: 80px;
   top: -40px;
   width: 100%;
-  z-index: 27;
+  z-index: 2;
   /*** Thanks for the gradients go to colorzilla.com ***/
   background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 24%, rgba(0,0,0,0.9) 34%, rgba(0,0,0,1) 45%, rgba(0,0,0,1) 55%, rgba(0,0,0,0.9) 66%, rgba(0,0,0,0.6) 76%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.6) 24%,rgba(0,0,0,0.9) 34%,rgba(0,0,0,1) 45%,rgba(0,0,0,1) 55%,rgba(0,0,0,0.9) 66%,rgba(0,0,0,0.6) 76%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
@@ -217,7 +217,7 @@ h6 {
 }
 
 .nav-menu-container {
-  z-index: 11;
+  z-index: 3;
   position: fixed;
   bottom: 10px;
   right: 10px;
@@ -265,6 +265,31 @@ h6 {
   padding-left: 10px;
   font-size: 1.5em;
 }
+
+  /****Fading Edge of the Nav Menu Links****/
+  .nav-menu-link-fade {
+    display: flex;
+    position: absolute;
+    width: 30px;
+    left: -30px;
+    height: 100%;
+    opacity: 1;
+    flex-flow: column;
+  }
+  
+    /****Fading div borders****/
+  .nav-menu-link-fade div:nth-child(odd) {
+    height: var(--nav-link-border-size);
+    width: 100%;
+    background-image : linear-gradient(to right, rgba(255,255,255, 0), var(--shadow) 100%);
+  }
+  
+    /****Fading div body****/
+  .nav-menu-link-fade div:nth-child(even) {
+    flex: 1;
+    width: 100%;
+    background-image : linear-gradient(to right,rgba(255,255,255, 0), var(--bgcolor-solid) 100%);
+  }
 
 
 /******************************
@@ -317,32 +342,13 @@ h6 {
 .nav-slide-out:nth-child(4) {animation-delay: 0.015s;}
 .nav-slide-out:nth-child(5) {animation-delay: 0s;}
 
-  /****Fading Edge of the Nav Menu Links****/
-.nav-menu-link-fade {
-  display: flex;
-  position: absolute;
-  width: 30px;
-  left: -30px;
-  height: 100%;
-  opacity: 1;
-  flex-flow: column;
-}
 
-.nav-menu-link-fade div:nth-child(odd) {
-  height: var(--nav-link-border-size);
-  width: 100%;
-  background-image : linear-gradient(to right, 
-                    rgba(255,255,255, 0), 
-                    var(--shadow) 90%);
-}
+/**********************************************
+***********************************************
+****Here begins section-specific styling*******
+***********************************************
+**********************************************/
 
-.nav-menu-link-fade div:nth-child(even) {
-  flex: 1;
-  width: 100%;
-  background-image : linear-gradient(to right, 
-                    rgba(255,255,255, 0), 
-                    var(--bgcolor-solid) 90%);
-}
 
 
   /****LANDING****/
@@ -406,17 +412,26 @@ h6 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: -50px -200px 0;
-  width: 840px;
+  width: 100%;
   max-width: 94vw;
+  margin: -50px -200px 0;
 }
 
 .technologies-group {
-  width: 220px;
+  width: 100%;
   padding: 20px;
   display: flex;
   flex-flow: column;
   margin: 50px 30px 0;
+}
+
+@media (min-width: 400px) {
+  .technologies-groups {
+    width: 900px;
+  }
+  .technologies-group {
+    width: 240px;
+  }
 }
 
 .technologies-row {
@@ -457,11 +472,9 @@ h6 {
   display: flex;
   flex-wrap: wrap;
   background: var(--bgcolor);
-  /* max-width: 94; */
 }
 
 .contacts-column {
-  /* border: 1px solid red; */
   display: flex;
   flex-flow: column;
   align-items: center;
