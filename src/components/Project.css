@@ -37,8 +37,14 @@
   color: white;
   background: rgba(0,0,0,0.6);
   box-shadow: 0 0 5px rgba(0,0,0,0.6);
+  font-size: 1.5em;
   padding: 2px 4px;
-  
+}
+
+@media (min-width: 600px) {
+  .project-image-holder button {
+    font-size: 1.1em;
+  }
 }
 
 .project-text-holder-links-techlist

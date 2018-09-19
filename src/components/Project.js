@@ -96,9 +96,8 @@ class Project extends React.Component {
             renderCenterRightControls={() => (
               null
             )}
-            autoplay={true}
-            pauseOnHover={true}
-            wrapAround={true} 
+            // autoplay={true}
+            // wrapAround={true} 
             dragging={true}
             swiping={true}>
             {this.generateImages()}
