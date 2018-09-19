@@ -100,7 +100,7 @@ class App extends Component {
     if(this.state.showTechNotePopup) {
       console.log('Showing popup');
       return (
-        <div className='technologies-note-popup technologies' onClick={() => this.closePopup()}>
+        <div className='technologies-note-popup technologies-theme' onClick={() => this.closePopup()}>
           <div className='technologies-note-popup-card card'>
             {this.state.techComment}
           </div>
@@ -151,7 +151,6 @@ class App extends Component {
             <Link className={`nav-menu-link landing-theme ${this.state.navMenuDisplay}`} to='landing' spy={true} smooth={true} duration={SCROLL_DURATION}>
               {this.displayNavMenuItem('Landing')}
             </Link>
-
             <Link className={`nav-menu-link about-theme ${this.state.navMenuDisplay}`} to='about' spy={true} smooth={true} duration={SCROLL_DURATION}>
               {this.displayNavMenuItem('About')}
             </Link>
