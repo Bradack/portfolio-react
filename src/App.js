@@ -174,7 +174,7 @@ class App extends Component {
             <div className='section-bg landing-bg' />
           </Background> */}
 
-          <div className='section landing-theme' id='landing'>
+          <div className='section landing-contents landing-theme' id='landing'>
             <div className='landing-title card'>
               <h1>Bradack Barnard</h1>
               <h4>Full-Stack Web Developer</h4>
