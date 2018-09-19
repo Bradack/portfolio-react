@@ -403,6 +403,7 @@ h6 {
 
 .technologies-note-popup-card {
   width: 95vw;
+  max-width: 600px;
   display: flex;
   flex-flow: column;
   padding: 20px;

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import  { Parallax } from 'react-parallax';
 import { Link, Events, scrollSpy } from 'react-scroll';
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
+
+
 
 import Project from './components/Project.js';
 
@@ -51,7 +54,10 @@ class App extends Component {
     }
   }
 
+  techNoteElement = null;
+
   componentDidMount() {
+    this.techNoteElement = document.querySelector('tech-note-popup');
     /*------------------------------------------------------------------------------
     -----React-scroll setup---------------------------------------------------------
     ------------------------------------------------------------------------------*/
@@ -89,14 +95,15 @@ class App extends Component {
       showTechNotePopup: true,
       scrollLock: true,
     })
-    
+    disableBodyScroll(this.techNoteElement, {reserveScrollBarGap: true});
   }
-
+  
   closePopup() {
     this.setState({
       techComment: '',
       showTechNotePopup: false
     })
+    enableBodyScroll(this.techNoteElement)
   }
 
   /*------------------------------------------------------------------------------
@@ -105,7 +112,7 @@ class App extends Component {
   showTechNotePopup() {
     if(this.state.showTechNotePopup) {
       return (
-        <div className='technologies-note-popup technologies-theme' onClick={() => this.closePopup()}>
+        <div className='technologies-note-popup technologies-theme' id='tech-note-popup' onClick={() => this.closePopup()}>
           <div className='technologies-note-popup-card card'>
             {this.state.techComment}
           </div>
