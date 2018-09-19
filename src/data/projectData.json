@@ -1,6 +1,11 @@
 [
   {
     "title": "Finite.ly",
+    "links": {
+      "github": "",
+      "hosted": "http://finite.ly",
+      "gitlab": "https://gitlab.com/Bradack/finite.ly"
+    },
     "technologies": [
       "React",
       "Redux",

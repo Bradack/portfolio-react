@@ -7,25 +7,27 @@ class Project extends React.Component {
   
   generateTechList(columns) {
     let techColumns = Array(columns).fill([])
-    // techColumns.fill(3, 0, columns)
-    this.props.project.technologies.forEach( (tech, index) => {
-      let column = index % columns
-      console.log('tech', tech);
-      console.log('column:', column);
-      techColumns[column].push(
-        <ul className='project-text-list-item' key={index}>
-          {tech}
-        </ul>
-      )
-      console.log('techColumns:', techColumns[0]);
+    
+    techColumns.forEach((arr, index) => {
+      techColumns[index] = this.props.project.technologies.map((tech, i) => {
+        if((i % columns) === index) {
+          return (
+            <li key={i}>
+              {tech}
+            </li>
+          );
+        }
+        return null;
+      })
+
+      techColumns[index] = techColumns[index].filter(item => item);
     })
     
-    console.log('techColumns:', techColumns[0]);
     let formatted = [];
 
     techColumns.forEach((techList, index) => {
       formatted[index] = (
-        <div key={index}>
+        <div className='project-text-techlist-column' key={index}>
           {techList}
         </div>
       )
@@ -34,19 +36,52 @@ class Project extends React.Component {
     return formatted;
   }
 
+  generateLinks() {
+    let rawLinks = this.props.project.links;
+    let formattedLinks = [];
+    
+    if(rawLinks.hosted) {
+      formattedLinks.push((
+        <a href={rawLinks.hosted} key='hosted'>Hosted</a>
+      ))
+    }
+
+    if(rawLinks.github) {
+      formattedLinks.push((
+        <a href={rawLinks.github} key='github'>GitHub</a>
+      ))
+    }
+
+    if(rawLinks.gitlab) {
+      formattedLinks.push((
+        <a href={rawLinks.gitlab} key='gitlab'>GitLab</a>
+      ))
+    }
+
+    return formattedLinks
+  }
+
   render() {
     return (
       <div className='project-container'>
         <div className='project-title'>
-          <h6>{this.props.project.title}</h6>
+          <h5>{this.props.project.title}</h5>
         </div>
         <div className='project-image-holder'>
           Something
         </div>
-        <div className='project-text-techlist'>
-          <h7>Notable Technologies</h7>
-          <div className='project-text-techlist-list'>
-            {this.generateTechList(2)}
+        <div className='project-text-holder-links-techlist'>
+          <div className='project-text-techlist'>
+            <h6>Notable Technologies</h6>
+            <div className='project-text-techlist-list'>
+              {this.generateTechList(2)}
+            </div>
+          </div>
+          <div className='project-text-techlist'>
+            <h6>Links</h6>
+            <div className='project-text-links'>
+              {this.generateLinks()}
+            </div>
           </div>
         </div>
         <div className='project-text-description'>

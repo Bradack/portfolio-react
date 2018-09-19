@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import  { Parallax, Background } from 'react-parallax';
+import  { Parallax } from 'react-parallax';
 import { Link, Events, scrollSpy } from 'react-scroll';
 
 import Project from './components/Project.js';
@@ -30,8 +30,6 @@ import githubLogo from './assets/icons/github.svg';
 import gitLogo from './assets/icons/git.svg';
 import gitlabLogo from './assets/icons/gitlab.svg';
 
-import reactLogoB from './logo.svg';
-
 import bgLanding from './assets/bgs/beach-clouds-dawn-754122.jpg';
 import bgAbout from './assets/bgs/ocean_bg2.jpg';
 import bgTechnologies from './assets/bgs/ocean-1845110_1920.jpg';
@@ -54,14 +52,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    Events.scrollEvent.register('begin', function(to, element) {
-      console.log("begin", arguments);
-    });
- 
-    Events.scrollEvent.register('end', function(to, element) {
-      console.log("end", arguments);
-    });
- 
+    /*------------------------------------------------------------------------------
+    -----React-scroll setup---------------------------------------------------------
+    ------------------------------------------------------------------------------*/
+    Events.scrollEvent.register('begin');
+    Events.scrollEvent.register('end');
     scrollSpy.update();
   }
 
@@ -70,6 +65,9 @@ class App extends Component {
     Events.scrollEvent.remove('end');
   }
 
+  /*------------------------------------------------------------------------------
+  -----Displays the fancy svg element divider for use in the Technologies area----
+  ------------------------------------------------------------------------------*/
   renderDivider() {
     return (
       <div className='svg-divider'>
@@ -80,6 +78,9 @@ class App extends Component {
     )
   }
 
+  /*------------------------------------------------------------------------------
+  -----Handles the logic for displaying the popups for the Technologies area------
+  ------------------------------------------------------------------------------*/
   selectTechnology(e, note) {
     e.preventDefault();
     e.stopPropagation();
@@ -91,9 +92,18 @@ class App extends Component {
     
   }
 
+  closePopup() {
+    this.setState({
+      techComment: '',
+      showTechNotePopup: false
+    })
+  }
+
+  /*------------------------------------------------------------------------------
+  -----Renders the popup to display notes in the Technologies area----------------
+  ------------------------------------------------------------------------------*/
   showTechNotePopup() {
     if(this.state.showTechNotePopup) {
-      console.log('Showing popup');
       return (
         <div className='technologies-note-popup technologies-theme' onClick={() => this.closePopup()}>
           <div className='technologies-note-popup-card card'>
@@ -104,16 +114,11 @@ class App extends Component {
     }
   }
 
-  closePopup() {
-    this.setState({
-      techComment: '',
-      showTechNotePopup: false
-    })
-  }
 
-    // Logic to open and close the mobine navigation menu
+  /*------------------------------------------------------------------------------
+  -----Handles the css animations of opening and closing the menu-----------------
+  ------------------------------------------------------------------------------*/
   toggleNavMenu() {
-    console.log('toggling nav maneu. Value: ', this.state.navMenuDisplay)
     if(this.state.navMenuDisplay !== 'nav-slide-in') {
       this.setState({navMenuDisplay: 'nav-slide-in'});
     } else {
@@ -123,7 +128,7 @@ class App extends Component {
 
   displayNavMenuItem(str) {
     return (
-      <div style={{width: '100%'}}>
+      <div style={{width: '100%'}} onClick={() => this.toggleNavMenu()}>
         <div className='nav-menu-link-fade'>
           <div/><div/><div/>
         </div>
@@ -173,10 +178,6 @@ class App extends Component {
           strength={PARALLAX_STRENGTH}
           bgImage={bgLanding}>
 
-          {/* <Background >
-            <div className='section-bg landing-bg' />
-          </Background> */}
-
           <div className='section landing-contents landing-theme' id='landing'>
             <div className='landing-title card'>
               <h1>Bradack Barnard</h1>
@@ -193,10 +194,6 @@ class App extends Component {
         <Parallax
           strength={PARALLAX_STRENGTH}
           bgImage={bgAbout}>
-
-          {/* <Background >
-            <div className='section-bg about-bg' />
-          </Background> */}
 
           <div className='section about-theme' id='about'>
             <div className='section-title card'>
@@ -219,10 +216,6 @@ class App extends Component {
         <Parallax
           strength={PARALLAX_STRENGTH}
           bgImage={bgTechnologies}>
-
-          {/* <Background >
-            <div className='section-bg technologies-bg' />
-          </Background> */}
 
           <div className='section technologies-theme disable-selection' id='technologies'>
             
@@ -255,7 +248,7 @@ class App extends Component {
 
                   <div className='technologies-row'>
                     <img src={postgresqlLogo} alt='PostgreSQL' onClick={e => this.selectTechnology(e, NOTES.SQL)} />
-                    <img src={awsLogo} atl='Amazon Web Services' onClick={e => this.selectTechnology(e, NOTES.AWS)} />
+                    <img src={awsLogo} alt='Amazon Web Services' onClick={e => this.selectTechnology(e, NOTES.AWS)} />
                     <img src={authLogo} alt='Auth 0' onClick={e => this.selectTechnology(e, NOTES.AUTH0)} />
                   </div>
 
@@ -311,10 +304,6 @@ class App extends Component {
           strength={PARALLAX_STRENGTH}
           bgImage={bgProjects}>
 
-          {/* <Background >
-            <div className='section-bg projects-bg' />
-          </Background> */}
-
           <div className='section projects-theme' id='projects'>
             <div className='section-title card'>
               <h2>PROJECTS</h2>
@@ -333,10 +322,6 @@ class App extends Component {
         <Parallax
           strength={PARALLAX_STRENGTH}
           bgImage={bgContacts}>
-
-          {/* <Background >
-            <div className='section-bg contacts-bg' />
-          </Background> */}
 
           <div className='section contacts-theme' id='contacts'>
             <div className='section-title card'>
