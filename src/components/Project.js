@@ -1,10 +1,22 @@
 import React from 'react';
+import Carousel from 'nuka-carousel';
 
 import './Project.css';
 
 
 class Project extends React.Component {
   
+  generateImages() {
+    let imageList = [];
+    this.props.project.images.forEach( (img, i) => {
+      imageList.push((
+        <img src={img} key={i} alt={`${this.props.project.title} project`} />
+      ))
+    })
+
+    return imageList;
+  }
+
   generateTechList(columns) {
     let techColumns = Array(columns).fill([])
     
@@ -68,7 +80,29 @@ class Project extends React.Component {
           <h5>{this.props.project.title}</h5>
         </div>
         <div className='project-image-holder'>
-          Something
+          <Carousel
+            renderBottomLeftControls={({previousSlide}) => (
+              <button onClick={previousSlide}>Prev</button>
+            )}
+            renderBottomRightControls={({nextSlide}) => (
+              <button onClick={nextSlide}>Next</button>
+            )}
+            renderBottomCenterControls={() => (
+              null
+            )}
+            renderCenterLeftControls={() => (
+              null
+            )}
+            renderCenterRightControls={() => (
+              null
+            )}
+            autoplay={true}
+            pauseOnHover={true}
+            wrapAround={true} 
+            dragging={true}
+            swiping={true}>
+            {this.generateImages()}
+          </Carousel>
         </div>
         <div className='project-text-holder-links-techlist'>
           <div className='project-text-techlist'>
