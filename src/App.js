@@ -3,35 +3,15 @@ import  { Parallax } from 'react-parallax';
 import { Link, Events, scrollSpy } from 'react-scroll';
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
-
-
 import Project from './components/Project.js';
 
 import './reset.css';
 import './App.css';
 
+import logo from './data/logos.js';
 import NOTES from './data/notes.js';
-import projects from './data/projectData.json';
+import projects from './data/projectData.js';
 
-import htmlLogo from './assets/icons/html5.svg';
-import cssLogo from './assets/icons/css3.svg';
-import jsLogo from './assets/icons/js.svg';
-import reactLogo from './assets/icons/react.svg';
-import reduxLogo from './assets/icons/redux.svg';
-import androidLogo from './assets/icons/android.svg';
-import postgresqlLogo from './assets/icons/postgresql.svg';
-import awsLogo from './assets/icons/aws.svg';
-import nodejsLogo from './assets/icons/nodejs.svg';
-import authLogo from './assets/icons/auth0.svg';
-import jwtLogo from './assets/icons/jwt.svg';
-import socketioLogo from './assets/icons/socketio.svg';
-import windowsLogo from './assets/icons/windows.svg';
-import ubuntuLogo from './assets/icons/ubuntuflat.svg';
-import vscodeLogo from './assets/icons/vscode.svg';
-import postmanLogo from './assets/icons/postman.svg';
-import githubLogo from './assets/icons/github.svg';
-import gitLogo from './assets/icons/git.svg';
-import gitlabLogo from './assets/icons/gitlab.svg';
 
 import bgLanding from './assets/bgs/beach-clouds-dawn-754122.jpg';
 import bgAbout from './assets/bgs/ocean_bg2.jpg';
@@ -235,15 +215,15 @@ class App extends Component {
             {/* FRONTEND TECHNOLOGIES CARD */}
                 <div className='technologies-group card'>
                   <div className='technologies-row'>
-                    <img src={htmlLogo} alt='HTML5' onClick={e => this.selectTechnology(e, NOTES.HTML)} />
-                    <img src={cssLogo} alt='CSS3' onClick={e => this.selectTechnology(e, NOTES.CSS)} />
-                    <img src={jsLogo} alt='Javascript' onClick={e => this.selectTechnology(e, NOTES.JS)} />
+                    <img src={logo.html} alt='HTML5' onClick={e => this.selectTechnology(e, NOTES.HTML)} />
+                    <img src={logo.css} alt='CSS3' onClick={e => this.selectTechnology(e, NOTES.CSS)} />
+                    <img src={logo.js} alt='Javascript' onClick={e => this.selectTechnology(e, NOTES.JS)} />
                   </div>
 
                   <div className='technologies-row'>
-                    <img src={reactLogo} alt='React' onClick={e => this.selectTechnology(e, NOTES.REACT)} />
-                    <img src={reduxLogo} alt='Redux' onClick={e => this.selectTechnology(e, NOTES.REDUX)} />
-                    <img src={androidLogo} alt='React Native' onClick={e => this.selectTechnology(e, NOTES.RN)} />
+                    <img src={logo.react} alt='React' onClick={e => this.selectTechnology(e, NOTES.REACT)} />
+                    <img src={logo.redux} alt='Redux' onClick={e => this.selectTechnology(e, NOTES.REDUX)} />
+                    <img src={logo.android} alt='React Native' onClick={e => this.selectTechnology(e, NOTES.RN)} />
                   </div>
 
                   {this.renderDivider()}
@@ -254,22 +234,22 @@ class App extends Component {
                 <div className='technologies-group card'>
 
                   <div className='technologies-row'>
-                    <img src={postgresqlLogo} alt='PostgreSQL' onClick={e => this.selectTechnology(e, NOTES.SQL)} />
-                    <img src={awsLogo} alt='Amazon Web Services' onClick={e => this.selectTechnology(e, NOTES.AWS)} />
-                    <img src={authLogo} alt='Auth 0' onClick={e => this.selectTechnology(e, NOTES.AUTH0)} />
+                    <img src={logo.postgressql} alt='PostgreSQL' onClick={e => this.selectTechnology(e, NOTES.SQL)} />
+                    <img src={logo.aws} alt='Amazon Web Services' onClick={e => this.selectTechnology(e, NOTES.AWS)} />
+                    <img src={logo.auth} alt='Auth 0' onClick={e => this.selectTechnology(e, NOTES.AUTH0)} />
                   </div>
 
                   <div className='technologies-row'>
                     <div style={{background: '#202020', borderRadius:'5px', width: '100%', height: '100%'}} onClick={e => this.selectTechnology(e, NOTES.NODE)} >
-                      <img src={nodejsLogo} alt='Node J S' style={{padding: '2px'}}/>
+                      <img src={logo.nodejs} alt='Node J S' style={{padding: '2px'}}/>
                     </div>
                     <div style={{
                         borderRadius: '100px',
                         overflow: 'hidden'}}
                         onClick={e => this.selectTechnology(e, NOTES.JWT)}>
-                      <img src={jwtLogo} alt='J W T' style={{height:'auto', width:'180%', maxWidth: 'none', maxHeight: 'none'}} />
+                      <img src={logo.jwt} alt='J W T' style={{height:'auto', width:'180%', maxWidth: 'none', maxHeight: 'none'}} />
                     </div>
-                    <img src={socketioLogo} alt='Socket I O' onClick={e => this.selectTechnology(e, NOTES.SIO)} />
+                    <img src={logo.socketio} alt='Socket I O' onClick={e => this.selectTechnology(e, NOTES.SIO)} />
                   </div>
 
                   {this.renderDivider()}
@@ -279,17 +259,17 @@ class App extends Component {
             {/* TOOLS TECHNOLOGIES CARD */}
                 <div className='technologies-group card'>
                   <div className='technologies-row'>
-                    <img src={vscodeLogo} alt='V S Code' onClick={e => this.selectTechnology(e, NOTES.VSC)} />
-                    <img src={postmanLogo} alt='Postman' onClick={e => this.selectTechnology(e, NOTES.POSTMAN)} />
+                    <img src={logo.vscode} alt='V S Code' onClick={e => this.selectTechnology(e, NOTES.VSC)} />
+                    <img src={logo.postman} alt='Postman' onClick={e => this.selectTechnology(e, NOTES.POSTMAN)} />
                   </div>
                   <div className='technologies-row'>
-                    <img src={githubLogo} alt='GitHub' onClick={e => this.selectTechnology(e, NOTES.GITHUB)} />
-                    <img src={gitLogo} alt='Git' onClick={e => this.selectTechnology(e, NOTES.GIT)} />
-                    <img src={gitlabLogo} alt='GitLab' onClick={e => this.selectTechnology(e, NOTES.GITLAB)} />
+                    <img src={logo.github} alt='GitHub' onClick={e => this.selectTechnology(e, NOTES.GITHUB)} />
+                    <img src={logo.git} alt='Git' onClick={e => this.selectTechnology(e, NOTES.GIT)} />
+                    <img src={logo.gitlab} alt='GitLab' onClick={e => this.selectTechnology(e, NOTES.GITLAB)} />
                   </div>
                   <div className='technologies-row'>
-                    <img src={windowsLogo} alt='Windows' onClick={e => this.selectTechnology(e, NOTES.WIN)} />
-                    <img src={ubuntuLogo} alt='Ubuntu' onClick={e => this.selectTechnology(e, NOTES.UBUNTU)} />
+                    <img src={logo.windows} alt='Windows' onClick={e => this.selectTechnology(e, NOTES.WIN)} />
+                    <img src={logo.ubuntu} alt='Ubuntu' onClick={e => this.selectTechnology(e, NOTES.UBUNTU)} />
                   </div>
                   {this.renderDivider()}
                   <h5>Tools</h5>
