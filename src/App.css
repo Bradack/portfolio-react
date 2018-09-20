@@ -473,6 +473,20 @@ h6 {
   white-space: pre-line; /* I find the necessity of this line to be particularly stupid*/
 }
 
+  /****PROJECTS****/
+.carousel-button {
+  border: none;
+  color: white;
+  border-radius: 3px;
+  background: rgba(0,0,0,0.6);
+  box-shadow: 0 0 5px rgba(0,0,0,0.6);
+}
+
+.carousel-button-project {
+  font-size: 2em;
+  margin: 5px;
+
+}
 
   /****CONTACTS****/
 

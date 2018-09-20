@@ -75,17 +75,17 @@ class Project extends React.Component {
 
   render() {
     return (
-      <div className='project-container'>
+      <div className='project-container project-theme'>
         <div className='project-title'>
           <h5>{this.props.project.title}</h5>
         </div>
         <div className='project-image-holder'>
           <Carousel
             renderBottomLeftControls={({previousSlide}) => (
-              <button onClick={previousSlide}>Prev</button>
+              <button className='carousel-button' onClick={previousSlide}>Prev</button>
             )}
             renderBottomRightControls={({nextSlide}) => (
-              <button onClick={nextSlide}>Next</button>
+              <button className='carousel-button' onClick={nextSlide}>Next</button>
             )}
             renderBottomCenterControls={() => (
               null

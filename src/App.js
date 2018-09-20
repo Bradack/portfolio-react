@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import  { Parallax } from 'react-parallax';
 import { Link, Events, scrollSpy } from 'react-scroll';
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
-
-
+import Carousel from 'nuka-carousel';
 
 import Project from './components/Project.js';
 
@@ -145,6 +144,21 @@ class App extends Component {
       </div>
     )
   }
+
+  /*------------------------------------------------------------------------------
+  -----Generates the list of project components to be fed into the carousel-------
+  ------------------------------------------------------------------------------*/
+  generateProjectList() {
+    let formattedProjects = [];
+    projects.forEach((project, index) => {
+      formattedProjects.push((
+        <Project project={project} key={index}/>
+      ))
+    });
+
+    return formattedProjects;
+  }
+
 
   render() {
     return (
@@ -316,7 +330,29 @@ class App extends Component {
               <h2>PROJECTS</h2>
             </div>
             <div className='projects-contents section-contents card'>
-              <Project project={projects[0]} />
+              <Carousel
+              renderTopLeftControls={({previousSlide}) => (
+                <button className='carousel-button carousel-button-project' onClick={previousSlide}>Prev</button>
+              )}
+              renderTopRightControls={({nextSlide}) => (
+                <button className='carousel-button carousel-button-project' onClick={nextSlide}>Next</button>
+              )}
+              renderBottomCenterControls={() => (
+                null
+              )}
+              renderCenterLeftControls={() => (
+                null
+              )}
+              renderCenterRightControls={() => (
+                null
+              )}
+              // autoplay={true}
+              // wrapAround={true} 
+              dragging={true}
+              swiping={true}>
+                {this.generateProjectList()}
+              </Carousel>
+              {/* <Project project={projects[0]}/> */}
             </div>
           </div>
 
