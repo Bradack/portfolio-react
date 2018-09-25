@@ -48,6 +48,7 @@ class App extends Component {
   }
 
   componentWillUnmount() {
+    clearAllBodyScrollLocks();
     Events.scrollEvent.remove('begin');
     Events.scrollEvent.remove('end');
   }
