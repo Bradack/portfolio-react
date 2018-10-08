@@ -395,7 +395,7 @@ class App extends Component {
                   <h6><a href='https://www.linkedin.com/in/BradackBarnard/'>BradackBarnard</a></h6>
                   <br />
                   <h6>GitHUB:</h6>
-                  <h6><a href='https://www.github.com/BradackB'>BradackB</a></h6>
+                  <h6><a href='https://www.github.com/Bradack'>Bradack</a></h6>
                 </div>
               </div>
             </div>

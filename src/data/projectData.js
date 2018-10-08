@@ -51,7 +51,7 @@ export default [
   {
     title: `Portfolio`,
     links: {
-      github: `https://github.com/bradackb/portfolio-react`,
+      github: `https://github.com/bradack/portfolio-react`,
       hosted: `https://bradack.info`,
     },
     technologies: [
