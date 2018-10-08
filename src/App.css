@@ -476,6 +476,10 @@ h6 {
 }
 
   /****PROJECTS****/
+.projects-contents {
+  padding: -60px;
+}
+
 .projects-theme button {
   border: none;
   border: 3px solid var(--shadow);
