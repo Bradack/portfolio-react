@@ -216,7 +216,7 @@ class App extends Component {
               <h5>Salutations!</h5>
               <p>I'll give you the benefit of the doubt that you already saw my name above. Blowing my own horn and talking about myself has never been a strong point of mine but here goes!</p>
               <p>I have been a huge fan of computers from a young age, everything about them from software to hardware has awed me and held a certain addictive quality. A high school course in QBasic assured me that I had both the mindset for it and, more importantly, loved programming. Meanwhile a course in maintenance lead me to an appreciation towards hardware and troubleshooting; things that have proved to be invaluable skills for this day and age. Despite A+ and Net+ certification, however, the bulk of my passion has always rested in the coding side of computer systems.</p>
-              <p>I find comfort in the languages' syntax, the structures, the absolute qualities of it all. People often find frustration in how computers work, often accusing them of being wrong, while I have always found fascination in how they almost faultlessly do exactly as they are told. Sometimes we just have to figure out exactly what we, or someone else, has told it to do. The problem solving, the puzzles and the struggles, the abstract models and ideas, the fact that there is always something more to learn... All of it makes programming such an enjoyable activity and provides so many wonderful challenges and room for growth.</p>
+              <p>I find comfort in the languages' syntax, the structures, the absolute qualities of it all. People often find frustration in how computers work, often accusing them of being wrong, while I have always found fascination in how they almost faultlessly do exactly as they are told. Sometimes we just have to figure out exactly what we, or someone else, has told it to do. The problem solving, the puzzles and the struggles, the abstract models and ideas, the fact that there is always something more to learn... All of it makes programming such an enjoyable activity and provides so many wonderful challenges and always more to learn.</p>
             </div>
           </div>
 
@@ -335,7 +335,7 @@ class App extends Component {
             </div>
             <div className='projects-contents section-contents'>
               <Carousel
-              // framePadding={'10px'}
+              // framePadding={'-10px'}
               // transitionMode={'fade'}
               slidesToShow={1}
               renderTopLeftControls={({previousSlide}) => (
@@ -355,7 +355,7 @@ class App extends Component {
               )}
               // autoplay={true}
               // wrapAround={true} 
-              dragging={false}
+              dragging={true}
               swiping={true}
               >
                 {this.generateProjectList()}

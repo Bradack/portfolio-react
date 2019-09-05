@@ -38,8 +38,6 @@ class Project extends React.Component {
         // Is this the last slide?
       newState.lastSlide = (newState.slideIndex === this.props.project.images.length-1);
     }
-
-    console.log('newState:', newState)
     this.setState(newState)
   }
 
