@@ -42,7 +42,6 @@
   position: absolute;
   bottom: 3px;
   border-width: 1px;
-  z-index: 10;
 }
 
 .project-image-holder > button:nth-child(2) {
