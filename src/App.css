@@ -476,9 +476,9 @@ h6 {
   /****PROJECTS****/
 .carousel-button {
   border: none;
-  color: white;
+  color: var(--projects-text);
   border-radius: 3px;
-  background: rgba(0,0,0,0.6);
+  background: rgba(253, 163, 151, 0.6);
   box-shadow: 0 0 5px rgba(0,0,0,0.6);
 }
 

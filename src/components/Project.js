@@ -74,54 +74,59 @@ class Project extends React.Component {
   }
 
   render() {
+    let noImage = {};
+
     return (
-      <div className='project-container project-theme'>
-        <div className='project-title'>
-          <h5>{this.props.project.title}</h5>
-        </div>
-        <div className='project-image-holder'>
-          <Carousel
-            renderBottomLeftControls={({previousSlide}) => (
-              <button className='carousel-button' onClick={previousSlide}>Prev</button>
-            )}
-            renderBottomRightControls={({nextSlide}) => (
-              <button className='carousel-button' onClick={nextSlide}>Next</button>
-            )}
-            renderBottomCenterControls={() => (
-              null
-            )}
-            renderCenterLeftControls={() => (
-              null
-            )}
-            renderCenterRightControls={() => (
-              null
-            )}
-            // autoplay={true}
-            // wrapAround={true} 
-            dragging={true}
-            swiping={true}>
-            {this.generateImages()}
-          </Carousel>
-        </div>
-        <div className='project-text-holder-links-techlist'>
-          <div className='project-text-techlist'>
-            <h6>Notable Technologies</h6>
-            <div className='project-text-techlist-list'>
-              {this.generateTechList(2)}
+      <div>
+        <div className='project-container project-theme'>
+          <div className='project-title'>
+            <h5>{this.props.project.title}</h5>
+          </div>
+          {(() => {
+            if(this.props.project.images) {
+              return (
+                <div className='project-image-holder'>
+                <Carousel
+                  renderBottomLeftControls={({previousSlide}) => (
+                    <button className='carousel-button' onClick={previousSlide}>Prev</button>
+                  )}
+                  renderBottomRightControls={({nextSlide}) => (
+                    <button className='carousel-button' onClick={nextSlide}>Next</button>
+                  )}
+                  renderBottomCenterControls={() => (null)}
+                  renderCenterLeftControls={() => (null)}
+                  renderCenterRightControls={() => (null)}
+                  // autoplay={true}
+                  // wrapAround={true} 
+                  dragging={true}
+                  swiping={true}>
+                  {this.generateImages()}
+                </Carousel>
+              </div>
+              )
+            }
+            noImage.gridColumn = '1 / -1'
+          })()}
+          <div className='project-text-holder-links-techlist' style={noImage}>
+            <div className='project-text-techlist'>
+              <h6>Notable Technologies</h6>
+              <div className='project-text-techlist-list'>
+                {this.generateTechList(2)}
+              </div>
+            </div>
+            <div className='project-text-techlist'>
+              <h6>Links</h6>
+              <div className='project-text-links'>
+                {this.generateLinks()}
+              </div>
             </div>
           </div>
-          <div className='project-text-techlist'>
-            <h6>Links</h6>
-            <div className='project-text-links'>
-              {this.generateLinks()}
-            </div>
+          <div className='project-text-description'>
+            {this.props.project.description}
           </div>
-        </div>
-        <div className='project-text-description'>
-          {this.props.project.description}
-        </div>
-        <div className='project-text-notes'>
-          {this.props.project.notes}
+          <div className='project-text-notes'>
+            {this.props.project.notes}
+          </div>
         </div>
       </div>
     )

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import  { Parallax } from 'react-parallax';
 import { Link, Events, scrollSpy } from 'react-scroll';
-import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import Carousel from 'nuka-carousel';
 
 import Project from './components/Project.js';
@@ -356,7 +356,7 @@ class App extends Component {
               <div className='contacts-main-card card'>
                 <div className='contacts-column'>
                   <h6>Phone:</h6>
-                  <h6><a href='tel:918-376-0086'>(918) 376-0086</a></h6>
+                  <h6><a href='tel:801-901-0427'>(801) 901-0427</a></h6>
                   <br />
                   <h6>Email:</h6>
                   <h6><a href='mailto:Bradack.Barnard@gmail.com'>Bradack.Barnard@gmail.com</a></h6>
@@ -366,7 +366,7 @@ class App extends Component {
                   <h6><a href='https://www.linkedin.com/in/BradackBarnard/'>BradackBarnard</a></h6>
                   <br />
                   <h6>GitHUB:</h6>
-                  <h6><a href='https://www.github.com/BradackB'>BradackB</a></h6>
+                  <h6><a href='https://www.github.com/Bradack'>Bradack</a></h6>
                 </div>
               </div>
             </div>

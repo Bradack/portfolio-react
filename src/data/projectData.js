@@ -38,9 +38,9 @@ export default [
       `PostgresSQL`,
       `Git`
     ],
-    images: [
-      ``
-    ],
+    // images: [
+    //   ``
+    // ],
     description: `Calendesk (I don't think we ever settled on a final name we were all happy with) was a group project developed while at DevMountain with a team of three other growing developers. Calendesk was aimed to provide, effectively, a mixture of trello-style 'card' organization that was, itself, organized onto a daily schedule calender. The primary focus of this project was learning and implementing React native and learning to work as a team both socially and through practicing further with Git and project organization. The backend was a lightweight Node.js server `,
     notes: `This thing was definitely an adventure... Of the five groups my cohort split into four decided to make React Native apps and I am proud to say that of those four our group was the only one to stick through to the end and develop a presentable project. I'm very thankful to my teammates for sticking through it despite how rough it was at times, both those that had the enthusiasm to and determination to make it work and those that were patient enough to keep with it when things looked unlikely. Learning the dev tools of CRNA, Expo, and the Android Studio wasn't nearly as easy as I had expected.`
   },

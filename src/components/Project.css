@@ -26,12 +26,13 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 4px;
+  padding: 4px;;
+  background: black;
   /* min-height: 70%; */
 }
 
 .project-image-holder img {
-  border-radius: 3px;
+  border-radius: 3px
 }
 
 .project-image-holder button {
