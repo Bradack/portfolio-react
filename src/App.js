@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import  { Parallax } from 'react-parallax';
 import { Link, Events, scrollSpy } from 'react-scroll';
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 import Carousel from 'nuka-carousel';
 
 import Project from './components/Project.js';
@@ -48,6 +48,7 @@ class App extends Component {
   }
 
   componentWillUnmount() {
+    clearAllBodyScrollLocks();
     Events.scrollEvent.remove('begin');
     Events.scrollEvent.remove('end');
   }
@@ -152,6 +153,9 @@ class App extends Component {
 
         {this.showTechNotePopup()}
 
+        {/*-----------------------------------------------------------------------------
+        -----NAVIGATION MENU------------------------------------------------------------
+        ------------------------------------------------------------------------------*/}
         <div className='nav-menu-container'>
           <div className='nav-menu-icon' onClick={() => this.toggleNavMenu()}>
             &#9776;
@@ -177,6 +181,9 @@ class App extends Component {
           </div>
         </div>
 
+        {/*-----------------------------------------------------------------------------
+        -----PAGE LANDING---------------------------------------------------------------
+        ------------------------------------------------------------------------------*/}
         <Parallax
           strength={PARALLAX_STRENGTH}
           bgImage={bgLanding}>
@@ -194,6 +201,9 @@ class App extends Component {
           <div />
         </div>
         
+        {/*-----------------------------------------------------------------------------
+        -----ABOUT SECTION--------------------------------------------------------------
+        ------------------------------------------------------------------------------*/}
         <Parallax
           strength={PARALLAX_STRENGTH}
           bgImage={bgAbout}>
@@ -216,6 +226,9 @@ class App extends Component {
           <div />
         </div>
 
+        {/*-----------------------------------------------------------------------------
+        -----TECHNOLOGIES SECTION-------------------------------------------------------
+        ------------------------------------------------------------------------------*/}
         <Parallax
           strength={PARALLAX_STRENGTH}
           bgImage={bgTechnologies}>
@@ -228,7 +241,9 @@ class App extends Component {
             <div className='section-contents technologies-contents'>
               
               <div className={`technologies-groups`}>
-            {/* FRONTEND TECHNOLOGIES CARD */}
+            {/*-----------------------------------------------------------------------------
+            -----FRONTEND TECHNOLOGIES CARD-------------------------------------------------
+            ------------------------------------------------------------------------------*/}
                 <div className='technologies-group card'>
                   <div className='technologies-row'>
                     <img src={logo.html} alt='HTML5' onClick={e => this.selectTechnology(e, NOTES.HTML)} />
@@ -246,7 +261,9 @@ class App extends Component {
                   <h5>Frontend</h5>
 
                 </div>
-            {/* BACKEND TECHNOLOGIES CARD */}
+            {/*-----------------------------------------------------------------------------
+            -----BACKEND TECHNOLOGIES CARD--------------------------------------------------
+            ------------------------------------------------------------------------------*/}
                 <div className='technologies-group card'>
 
                   <div className='technologies-row'>
@@ -272,7 +289,9 @@ class App extends Component {
                   <h5>Backend</h5>
                   
                 </div>
-            {/* TOOLS TECHNOLOGIES CARD */}
+            {/*-----------------------------------------------------------------------------
+            -----TOOLS TECHNOLOGIES CARD----------------------------------------------------
+            ------------------------------------------------------------------------------*/}
                 <div className='technologies-group card'>
                   <div className='technologies-row'>
                     <img src={logo.vscode} alt='V S Code' onClick={e => this.selectTechnology(e, NOTES.VSC)} />
@@ -303,6 +322,9 @@ class App extends Component {
           <div />
         </div>
 
+        {/*-----------------------------------------------------------------------------
+        -----PROJECTS SECTION-----------------------------------------------------------
+        ------------------------------------------------------------------------------*/}
         <Parallax
           strength={PARALLAX_STRENGTH}
           bgImage={bgProjects}>
@@ -311,8 +333,11 @@ class App extends Component {
             <div className='section-title card'>
               <h2>PROJECTS</h2>
             </div>
-            <div className='projects-contents section-contents card'>
+            <div className='projects-contents section-contents'>
               <Carousel
+              // framePadding={'10px'}
+              // transitionMode={'fade'}
+              slidesToShow={1}
               renderTopLeftControls={({previousSlide}) => (
                 <button className='carousel-button carousel-button-project' onClick={previousSlide}>Prev</button>
               )}
@@ -331,7 +356,8 @@ class App extends Component {
               // autoplay={true}
               // wrapAround={true} 
               dragging={true}
-              swiping={true}>
+              swiping={true}
+              >
                 {this.generateProjectList()}
               </Carousel>
               {/* <Project project={projects[0]}/> */}
@@ -344,6 +370,9 @@ class App extends Component {
           <div />
         </div>
 
+        {/*-----------------------------------------------------------------------------
+        -----CONTACTS SECTION-----------------------------------------------------------
+        ------------------------------------------------------------------------------*/}
         <Parallax
           strength={PARALLAX_STRENGTH}
           bgImage={bgContacts}>

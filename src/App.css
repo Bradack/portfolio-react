@@ -29,6 +29,7 @@
   --projects-card: rgba(228, 222, 218, 0.8); 
   --projects-card-solid: rgba(228, 222, 218); 
   --projects-card-shadow: rgba(253, 163, 151);
+  --projects-card-shadow-opacity: rgba(253, 163, 151, 0.4);
 
   --contacts-text: rgb(57, 177, 243);
   --contacts-card: rgba(2, 22, 81, 0.8); 
@@ -198,6 +199,7 @@ h6 {
   --bgcolor: var(--projects-card);
   --bgcolor-solid: var(--projects-card-solid);
   --shadow: var(--projects-card-shadow);
+  --shadow-opacity: var(--projects-card-shadow-opacity);
 }
 
   /****CONTACTS****/
@@ -474,7 +476,11 @@ h6 {
 }
 
   /****PROJECTS****/
-.carousel-button {
+.projects-contents {
+  padding: -60px;
+}
+
+.projects-theme button {
   border: none;
   color: var(--projects-text);
   border-radius: 3px;
@@ -484,7 +490,7 @@ h6 {
 
 .carousel-button-project {
   font-size: 2em;
-  margin: 5px;
+  margin: 20px;
 
 }
 

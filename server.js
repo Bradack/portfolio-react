@@ -14,5 +14,4 @@ app.get('/', (req, res, next) => {
   res.sendFile(path.join(__dirname + './build/index.html'));
 });
 
-app.listen(SERVER_PORT,
-           () => console.log(`Something dark lurks on port ${SERVER_PORT}...`))
+app.listen(SERVER_PORT, () => console.log(`Something dark lurks on port ${SERVER_PORT}...`))

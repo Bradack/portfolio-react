@@ -5,7 +5,47 @@ import './Project.css';
 
 
 class Project extends React.Component {
-  
+  constructor(props) {
+    super(props);
+    this.state = {
+      slideIndex: 0,
+      firstSlide: true,
+      lastSlide: false,
+    }
+
+    this.state.lastSlide = (props.project.images.length <= 1);
+  }
+
+  /*------------------------------------------------------------------------------
+  -----A function to move the carousel between slides.----------------------------
+  ------Passing true advances one slide while passing false goes back one slide---
+  ------------------------------------------------------------------------------*/
+  nextSlide(next) {
+    let newState = {};
+    
+      // Checks to make sure the slide is not the last image available before going forward one
+    if((next === true) && (this.state.slideIndex <= this.props.project.images.length-1)) {
+      newState.slideIndex = this.state.slideIndex + 1;
+      // Checks to make sure the slide is not the first image before going back one
+    } else if(next === false && (this.state.slideIndex > 0)) {
+      newState.slideIndex = this.state.slideIndex - 1;
+    }
+
+    /*------------------------------------------------------------------------------
+    -----Detect whether it is the first slide or the last slide---------------------
+    ------------------------------------------------------------------------------*/
+      // Is this the first slide?
+    newState.firstSlide = (newState.slideIndex === 0);
+      // Is this the last slide?
+    newState.lastSlide = (newState.slideIndex === this.props.project.images.length-1);
+
+
+    this.setState(newState)
+  }
+
+  /*------------------------------------------------------------------------------
+  -----Generates the list of images for displaying in the carousel----------------
+  ------------------------------------------------------------------------------*/
   generateImages() {
     let imageList = [];
     this.props.project.images.forEach( (img, i) => {
@@ -17,6 +57,9 @@ class Project extends React.Component {
     return imageList;
   }
 
+  /*------------------------------------------------------------------------------
+  -----Splits the technologies list into multiple columns for viewing-------------
+  ------------------------------------------------------------------------------*/
   generateTechList(columns) {
     let techColumns = Array(columns).fill([])
     
@@ -24,9 +67,9 @@ class Project extends React.Component {
       techColumns[index] = this.props.project.technologies.map((tech, i) => {
         if((i % columns) === index) {
           return (
-            <li key={i}>
+            <div key={i}>
               {tech}
-            </li>
+            </div>
           );
         }
         return null;
@@ -48,6 +91,9 @@ class Project extends React.Component {
     return formatted;
   }
 
+  /*------------------------------------------------------------------------------
+  -----Generates the appropriate links based off which are on file----------------
+  ------------------------------------------------------------------------------*/
   generateLinks() {
     let rawLinks = this.props.project.links;
     let formattedLinks = [];
@@ -74,59 +120,66 @@ class Project extends React.Component {
   }
 
   render() {
-    let noImage = {};
+
+    let displayCarousel = {};
+    let stretchTechlist = {};
+    
+    if(this.props.project.images.length === 0) {
+      displayCarousel.display = 'none';
+      stretchTechlist = {gridColumn: '1 / -1'};
+    }
+
+    let prevBtnStyle = {visibility: 'visible'};
+    let nextBtnStyle = {visibility: 'visible'};
+
+    if(this.state.firstSlide) {
+      prevBtnStyle.visibility = 'hidden';
+    }
+    if(this.state.lastSlide) {
+      nextBtnStyle.visibility = 'hidden';
+    }
+
 
     return (
-      <div>
-        <div className='project-container project-theme'>
-          <div className='project-title'>
-            <h5>{this.props.project.title}</h5>
-          </div>
-          {(() => {
-            if(this.props.project.images) {
-              return (
-                <div className='project-image-holder'>
-                <Carousel
-                  renderBottomLeftControls={({previousSlide}) => (
-                    <button className='carousel-button' onClick={previousSlide}>Prev</button>
-                  )}
-                  renderBottomRightControls={({nextSlide}) => (
-                    <button className='carousel-button' onClick={nextSlide}>Next</button>
-                  )}
-                  renderBottomCenterControls={() => (null)}
-                  renderCenterLeftControls={() => (null)}
-                  renderCenterRightControls={() => (null)}
-                  // autoplay={true}
-                  // wrapAround={true} 
-                  dragging={true}
-                  swiping={true}>
-                  {this.generateImages()}
-                </Carousel>
-              </div>
-              )
-            }
-            noImage.gridColumn = '1 / -1'
-          })()}
-          <div className='project-text-holder-links-techlist' style={noImage}>
-            <div className='project-text-techlist'>
-              <h6>Notable Technologies</h6>
-              <div className='project-text-techlist-list'>
-                {this.generateTechList(2)}
-              </div>
-            </div>
-            <div className='project-text-techlist'>
-              <h6>Links</h6>
-              <div className='project-text-links'>
-                {this.generateLinks()}
-              </div>
+      <div className='project-container card'>
+        <div className='project-title'>
+          <h5>{this.props.project.title}</h5>
+        </div>
+        <div className='project-image-holder' style={displayCarousel}>
+          <Carousel
+            slideIndex={this.state.slideIndex}
+            renderBottomCenterControls={() => (null)}
+            renderCenterLeftControls={() => (null)}
+            renderCenterRightControls={() => (null)}
+            dragging={false}
+            swiping={false}
+            >
+            {this.generateImages()}
+          </Carousel>
+          <button className='project-carousel-button-left' style={prevBtnStyle} onClick={() => this.nextSlide(false)}>Prev</button>
+          <button className='project-carousel-button-right' style={nextBtnStyle} onClick={() => this.nextSlide(true)}>Next</button>
+        </div>
+        <div className='project-text-holder-links-techlist' style={stretchTechlist}>
+          <div className='project-text-techlist'>
+            <h6>Notable Technologies</h6>
+            <div className='project-text-techlist-list'>
+              {this.generateTechList(2)}
             </div>
           </div>
-          <div className='project-text-description'>
-            {this.props.project.description}
+          <div className='project-text-techlist'>
+            <h6>Links</h6>
+            <div className='project-text-links'>
+              {this.generateLinks()}
+            </div>
           </div>
-          <div className='project-text-notes'>
-            {this.props.project.notes}
-          </div>
+        </div>
+        <div className='project-text-description'>
+          <h6>Description</h6>
+          {this.props.project.description}
+        </div>
+        <div className='project-text-notes'>
+          <h6>Notes</h6>
+          {this.props.project.notes}
         </div>
       </div>
     )
