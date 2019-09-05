@@ -344,15 +344,9 @@ class App extends Component {
               renderTopRightControls={({nextSlide}) => (
                 <button className='carousel-button carousel-button-project' onClick={nextSlide}>Next</button>
               )}
-              renderBottomCenterControls={() => (
-                null
-              )}
-              renderCenterLeftControls={() => (
-                null
-              )}
-              renderCenterRightControls={() => (
-                null
-              )}
+              renderBottomCenterControls={() => null}
+              renderCenterLeftControls={() => null}
+              renderCenterRightControls={() => null}
               // autoplay={true}
               // wrapAround={true} 
               dragging={true}
