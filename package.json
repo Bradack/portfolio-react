@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "body-scroll-lock": "^2.5.7",
-    "nuka-carousel": "^4.3.11",
+    "nuka-carousel": "^4.8.4",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-parallax": "^1.7.0",
